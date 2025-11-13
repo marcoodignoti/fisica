@@ -1,0 +1,21 @@
+# 📚 Corso di Fisica Generale I
+
+Un corso interattivo e completo di Fisica Generale I con appunti, lezioni e formule matematiche renderizzate in tempo reale.
+
+## 🌟 Caratteristiche
+
+- **📖 Lezioni Organizzate**: 4 lezioni fondamentali strutturate in modo chiaro e progressivo
+- **🌙 Dark Mode**: Interfaccia con tema scuro/chiaro completamente personalizzabile
+- **📐 Formule Matematiche**: Rendering avanzato con KaTeX per notazione scientifica
+- **⚡ Single Page Application**: Navigazione fluida e veloce senza ricaricare la pagina
+- **📱 Responsive Design**: Perfetto su desktop, tablet e dispositivi mobile
+- **♿ Accessibile**: Conforme agli standard WCAG AA
+- **💾 Persistenza**: Salvataggio automatico delle preferenze dell'utente (tema)
+- **🎨 UI Minimalista**: Design pulito basato su Tailwind CSS
+
+## 🚀 Quick Start
+
+### 1. Clonare la repository
+```bash
+git clone https://github.com/marcoodignoti/fisica.git
+cd fisica
