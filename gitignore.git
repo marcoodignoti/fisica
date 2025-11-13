@@ -1,0 +1,210 @@
+# ===================================
+# ENVIRONMENT & CONFIGURATION
+# ===================================
+.env
+.env.local
+.env.*.local
+.env.production
+config.local.js
+
+# ===================================
+# IDE & EDITOR
+# ===================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+*.iml
+.gradle
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history/
+.ionide/
+
+# ===================================
+# OS FILES
+# ===================================
+Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+._*
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+
+# ===================================
+# NODE & PACKAGE MANAGERS
+# ===================================
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+dist/
+build/
+
+# ===================================
+# TESTING
+# ===================================
+.nyc_output/
+coverage/
+.mocha_output/
+test-results/
+
+# ===================================
+# BUILD & DIST
+# ===================================
+dist/
+build/
+out/
+*.bundle.js
+*.min.js
+*.min.css
+
+# ===================================
+# LOGS
+# ===================================
+logs/
+*.log
+log.txt
+error.log
+debug.log
+
+# ===================================
+# TEMPORARY FILES
+# ===================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+temp/
+
+# ===================================
+# SYSTEM FILES
+# ===================================
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.directory
+.folder
+*.lnk
+
+# ===================================
+# COMPILED & TRANSPILED
+# ===================================
+*.pyc
+__pycache__/
+*.class
+*.jar
+*.exe
+*.o
+*.a
+*.so
+
+# ===================================
+# VSCODE SETTINGS (LOCAL)
+# ===================================
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-workspace
+
+# ===================================
+# PRIVATE & SENSITIVE FILES
+# ===================================
+*.pem
+*.key
+*.crt
+*.p12
+.secrets
+secrets.json
+private/
+credentials.json
+
+# ===================================
+# DATABASE FILES
+# ===================================
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+
+# ===================================
+# LOCAL DEVELOPMENT
+# ===================================
+local/
+dev/
+.local/
+.development
+*.local.js
+local.json
+
+# ===================================
+# BACKUP & ARCHIVE
+# ===================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*.backup
+*.old
+
+# ===================================
+# DOCUMENTATION BUILDS
+# ===================================
+docs/_build/
+site/
+
+# ===================================
+# ASSET COMPILATION
+# ===================================
+.sass-cache/
+.less-cache/
+*.css.map
+*.js.map
+
+# ===================================
+# MISC
+# ===================================
+.vagrant/
+.venv/
+env/
+venv/
+*.egg-info/
+dist/
+build/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
