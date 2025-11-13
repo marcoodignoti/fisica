@@ -13,9 +13,68 @@ Un corso interattivo e completo di Fisica Generale I con appunti, lezioni e form
 - **💾 Persistenza**: Salvataggio automatico delle preferenze dell'utente (tema)
 - **🎨 UI Minimalista**: Design pulito basato su Tailwind CSS
 
+## 🌐 Live Demo
+
+Il sito è disponibile online all'indirizzo: **https://marcoodignoti.github.io/fisica/**
+
 ## 🚀 Quick Start
 
-### 1. Clonare la repository
+### Opzione 1: Visualizza Online
+Visita semplicemente [https://marcoodignoti.github.io/fisica/](https://marcoodignoti.github.io/fisica/) per accedere al corso.
+
+### Opzione 2: Esecuzione Locale
+
+#### 1. Clonare la repository
 ```bash
 git clone https://github.com/marcoodignoti/fisica.git
 cd fisica
+```
+
+#### 2. Avviare un server locale
+Puoi usare qualsiasi web server. Esempi:
+
+**Python:**
+```bash
+python -m http.server 8080
+```
+
+**Node.js (http-server):**
+```bash
+npx http-server -p 8080
+```
+
+#### 3. Aprire nel browser
+Visita `http://localhost:8080` nel tuo browser.
+
+## 📦 Deployment
+
+Il sito viene automaticamente deployato su GitHub Pages quando vengono fatti push sul branch `main`.
+
+### Configurazione GitHub Pages
+1. Vai su **Settings** → **Pages** del repository
+2. Seleziona **Source**: GitHub Actions
+3. Il workflow `.github/workflows/deploy.yml` gestirà automaticamente il deployment
+
+## 🛠️ Tecnologie Utilizzate
+
+- **HTML5**: Struttura semantica della pagina
+- **CSS3**: Stili personalizzati e animazioni
+- **JavaScript (ES6+)**: Logica dell'applicazione e routing SPA
+- **Tailwind CSS**: Framework CSS utility-first (via CDN)
+- **KaTeX**: Rendering delle formule matematiche
+- **GitHub Pages**: Hosting statico gratuito
+
+## 📚 Contenuti del Corso
+
+1. **Introduzione** - Analisi dimensionale e Sistema Internazionale
+2. **Cinematica** - Moto del punto materiale
+3. **Dinamica** - I principi di Newton
+4. **Energia** - Lavoro, energia cinetica e potenziale
+
+## 🤝 Contributi
+
+I contributi sono benvenuti! Sentiti libero di aprire issues o pull requests.
+
+## 📄 Licenza
+
+Questo progetto è open source e disponibile sotto licenza MIT.
