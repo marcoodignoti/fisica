@@ -18,18 +18,6 @@
     <!-- CSS Personale -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Prevent Flash of Unstyled Content (FOUC) -->
-    <script>
-        (function() {
-            const stored = localStorage.getItem('theme');
-            const isDark = stored === 'dark' || 
-                (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
-
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -60,6 +48,19 @@
     </script>
 </head>
 <body class="font-mono text-base leading-relaxed bg-white dark:bg-gray-900">
+
+    <!-- Prevent Flash of Unstyled Content (FOUC) -->
+    <script>
+        (function() {
+            const stored = localStorage.getItem('theme');
+            const isDark = stored === 'dark' || 
+                (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+            }
+        })();
+    </script>
 
     <!-- THEME TOGGLE BUTTON -->
     <button class="theme-toggle" id="theme-toggle" aria-label="Attiva/Disattiva dark mode" title="Dark mode">
