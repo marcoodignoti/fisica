@@ -61,11 +61,21 @@ class ThemeManager {
 // ===================================
 // MARKDOWN LOADER - Dynamic Content Loading
 // ===================================
+
+// HTML escaping utility to prevent XSS
+function escapeHTML(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 class MarkdownLoader {
     constructor() {
         this.lessonsManifest = null;
         this.lessonsDB = {};
         this.cache = new Map();
+        this.maxCacheSize = 10; // Limit cache size to prevent memory issues
     }
 
     async loadManifest() {
@@ -105,13 +115,18 @@ class MarkdownLoader {
         const [, frontmatter, content] = match;
         const metadata = {};
         
-        frontmatter.split('\n').forEach(line => {
-            const [key, ...valueParts] = line.split(':');
-            if (key && valueParts.length) {
-                const value = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
-                metadata[key.trim()] = value;
-            }
-        });
+        frontmatter
+            .split('\n')
+            .filter(line => line.trim() && !line.trim().startsWith('#'))
+            .forEach(line => {
+                const [key, ...valueParts] = line.split(':');
+                if (key && valueParts.length) {
+                    const value = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
+                    if (value) {  // Only add if value is not empty
+                        metadata[key.trim()] = value;
+                    }
+                }
+            });
         
         return { metadata, content };
     }
@@ -142,11 +157,15 @@ class MarkdownLoader {
             // Parse markdown to HTML
             const htmlContent = marked.parse(content);
             
+            // Escape metadata to prevent XSS
+            const safeTitle = escapeHTML(metadata.title || lesson.title);
+            const safeDate = escapeHTML(metadata.date || lesson.date);
+            
             // Wrap content in proper structure
             const wrappedContent = `
                 <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
-                    <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">${metadata.title || lesson.title}</h1>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Data: ${metadata.date || lesson.date}</div>
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">${safeTitle}</h1>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Data: ${safeDate}</div>
                 </header>
                 <article class="space-y-6 text-justify dark:text-gray-200">
                     ${htmlContent}
@@ -159,7 +178,11 @@ class MarkdownLoader {
                 metadata
             };
             
-            // Cache the result
+            // Cache management - remove oldest entry if cache is full
+            if (this.cache.size >= this.maxCacheSize) {
+                const firstKey = this.cache.keys().next().value;
+                this.cache.delete(firstKey);
+            }
             this.cache.set(cacheKey, result);
             
             return result;
@@ -218,20 +241,24 @@ class Router {
 
         for (const id in this.lessonsDB) {
             const lesson = this.lessonsDB[id];
+            const safeTitle = escapeHTML(lesson.title);
+            const safeDate = escapeHTML(lesson.date);
+            const safeDescription = escapeHTML(lesson.description);
+            
             html += `
                 <article class="group" role="listitem">
                     <header>
                         <h3 class="text-2xl font-bold mb-1">
-                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Vai alla lezione: ${lesson.title}">
-                                ${lesson.title}
+                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Vai alla lezione: ${safeTitle}">
+                                ${safeTitle}
                             </button>
                         </h3>
                         <div class="arrow-deco text-lg mb-2" aria-hidden="true">▼</div>
-                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">Pubblicato il: ${lesson.date}</div>
+                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">Pubblicato il: ${safeDate}</div>
                     </header>
-                    <div class="mb-3 dark:text-gray-300"><p>${lesson.description}</p></div>
+                    <div class="mb-3 dark:text-gray-300"><p>${safeDescription}</p></div>
                     <footer>
-                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Leggi la lezione ${lesson.title}">
+                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Leggi la lezione ${safeTitle}">
                             [ Leggi ]
                         </button>
                     </footer>
@@ -306,10 +333,11 @@ class Router {
         const nextId = id + 1;
 
         if (this.lessonsDB[prevId]) {
+            const safePrevTitle = escapeHTML(this.lessonsDB[prevId].title);
             prevContainer.innerHTML = `
                 <span class="block text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Precedente</span>
                 <button class="nav-btn standard-link font-bold text-sm md:text-base" data-route="lesson" data-lesson-id="${prevId}">
-                    ← ${this.lessonsDB[prevId].title}
+                    ← ${safePrevTitle}
                 </button>
             `;
         } else {
@@ -322,10 +350,11 @@ class Router {
         }
 
         if (this.lessonsDB[nextId]) {
+            const safeNextTitle = escapeHTML(this.lessonsDB[nextId].title);
             nextContainer.innerHTML = `
                 <span class="block text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Successiva</span>
                 <button class="nav-btn standard-link font-bold text-sm md:text-base" data-route="lesson" data-lesson-id="${nextId}">
-                    ${this.lessonsDB[nextId].title} →
+                    ${safeNextTitle} →
                 </button>
             `;
         } else {
@@ -343,7 +372,14 @@ class Router {
 // INIZIALIZZAZIONE APP
 // ===================================
 document.addEventListener('DOMContentLoaded', async () => {
-    new ThemeManager();
-    const router = new Router();
-    await router.init();
+    try {
+        new ThemeManager();
+        const router = new Router();
+        await router.init();
+    } catch (error) {
+        console.error('Failed to initialize application:', error);
+        // Display user-friendly error message
+        const container = document.getElementById('lessons-list-container') || document.body;
+        container.innerHTML = '<div style="padding: 2rem; text-align: center; color: #dc2626;">Errore di inizializzazione. Per favore ricarica la pagina.</div>';
+    }
 });

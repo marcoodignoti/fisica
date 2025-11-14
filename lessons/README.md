@@ -42,7 +42,8 @@ Il tuo contenuto qui...
 
 - **Headers**: Use `#`, `##`, `###` for different heading levels
 - **Math**: Use `$...$` for inline math, `$$ ... $$` for display math
-- **HTML**: You can include HTML for complex layouts (like SVG diagrams)
+- **HTML**: You can include HTML for complex layouts (like SVG diagrams)  
+  ⚠️ **Security Note**: Only include HTML from trusted sources. Malicious HTML/JavaScript in markdown files could pose security risks.
 - **Lists**: Use `-` or `1.` for bullet and numbered lists
 - **Code**: Use backticks for inline code or triple backticks for code blocks
 
