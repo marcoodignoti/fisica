@@ -20,7 +20,7 @@ body {
 }
 
 body.dark {
-    background-color: #1a1a1a;
+    background-color: #000000;
     color: #e5e5e5;
 }
 
@@ -57,7 +57,7 @@ body.dark {
 }
 
 body.dark #view-landing {
-    background-color: #1a1a1a;
+    background-color: #000000;
 }
 
 /* Index & Lesson Views */
@@ -183,18 +183,11 @@ body.dark button.breadcrumb-link:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
-    border: 2px solid #000000;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 4px;
     padding: 0;
-    font-size: 1.25rem;
-}
-
-body.dark .theme-toggle {
-    background-color: #2a2a2a;
-    border-color: #e5e5e5;
 }
 
 .theme-toggle:hover {
@@ -208,10 +201,11 @@ body.dark .theme-toggle {
 .theme-toggle:focus {
     outline: 2px solid #000000;
     outline-offset: 2px;
+    border-radius: 4px;
 }
 
 body.dark .theme-toggle:focus {
-    outline: 2px solid #e5e5e5;
+    outline: 2px solid #ffffff;
 }
 
 .sun-icon,
@@ -220,24 +214,30 @@ body.dark .theme-toggle:focus {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+/* Light mode: show black moon */
 .sun-icon {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+    color: #ffffff;
 }
 
 .moon-icon {
-    opacity: 0;
-    transform: scale(0.5) rotate(-45deg);
+    opacity: 1;
+    transform: scale(1);
+    color: #000000;
 }
 
+/* Dark mode: show white sun */
 body.dark .sun-icon {
-    opacity: 0;
-    transform: scale(0.5) rotate(45deg);
+    opacity: 1;
+    transform: scale(1);
+    color: #ffffff;
 }
 
 body.dark .moon-icon {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0;
+    transform: scale(0.5) rotate(45deg);
+    color: #000000;
 }
 
 .arrow-deco {
