@@ -1,0 +1,93 @@
+# 📚 Corso di Fisica Generale I
+
+Un corso interattivo e completo di Fisica Generale I con appunti, lezioni e formule matematiche renderizzate in tempo reale.
+
+## 🌟 Caratteristiche
+
+- **📖 Lezioni Organizzate**: 4 lezioni fondamentali strutturate in modo chiaro e progressivo
+- **🌙 Dark Mode**: Interfaccia con tema scuro/chiaro completamente personalizzabile
+- **📐 Formule Matematiche**: Rendering avanzato con KaTeX per notazione scientifica
+- **⚡ Single Page Application**: Navigazione fluida e veloce senza ricaricare la pagina
+- **📱 Responsive Design**: Perfetto su desktop, tablet e dispositivi mobile
+- **♿ Accessibile**: Conforme agli standard WCAG AA
+- **💾 Persistenza**: Salvataggio automatico delle preferenze dell'utente (tema)
+- **🎨 UI Minimalista**: Design pulito basato su Tailwind CSS
+
+## 🌐 Live Demo
+
+Il sito è disponibile online all'indirizzo: **https://marcoodignoti.github.io/fisica/
+
+## 🚀 Quick Start
+
+### Opzione 1: Visualizza Online
+Visita semplicemente [https://marcoodignoti.github.io/fisica/](https://marcoodignoti.github.io/fisica/) per accedere al corso.
+
+### Opzione 2: Esecuzione Locale
+
+#### 1. Clonare la repository
+```bash
+git clone https://github.com/marcoodignoti/fisica.git
+cd fisica
+```
+
+#### 2. Avviare un server locale
+Puoi usare qualsiasi web server. Esempi:
+
+**Python:**
+```bash
+python -m http.server 8080
+```
+
+**Node.js (http-server):**
+```bash
+npx http-server -p 8080
+```
+
+#### 3. Aprire nel browser
+Visita `http://localhost:8080` nel tuo browser.
+
+## 📦 Deployment
+
+Il sito viene automaticamente deployato su GitHub Pages quando vengono fatti push sul branch `main`.
+
+### Configurazione GitHub Pages
+1. Vai su **Settings** → **Pages** del repository
+2. Seleziona **Source**: GitHub Actions
+3. Il workflow `.github/workflows/deploy.yml` gestirà automaticamente il deployment
+
+## 🛠️ Tecnologie Utilizzate
+
+- **HTML5**: Struttura semantica della pagina
+- **CSS3**: Stili personalizzati e animazioni
+- **JavaScript (ES6+)**: Logica dell'applicazione e routing SPA
+- **Tailwind CSS**: Framework CSS utility-first (via CDN)
+- **Marked.js**: Parser Markdown per rendering dinamico dei contenuti
+- **KaTeX**: Rendering delle formule matematiche
+- **GitHub Pages**: Hosting statico gratuito
+
+## 📚 Contenuti del Corso
+
+Le lezioni sono scritte in **Markdown** e caricate dinamicamente, rendendo facile l'aggiunta e la modifica via Git o GitHub editor.
+
+1. **Introduzione** - Analisi dimensionale e Sistema Internazionale
+2. **Cinematica** - Moto del punto materiale
+3. **Dinamica** - I principi di Newton
+4. **Energia** - Lavoro, energia cinetica e potenziale
+
+### Aggiungere Nuove Lezioni
+
+Per aggiungere una nuova lezione:
+1. Crea un file `.md` nella cartella `lessons/`
+2. Aggiungi i metadati frontmatter (titolo, data, descrizione)
+3. Scrivi il contenuto in Markdown
+4. Aggiorna `lessons/lessons.json` con i dettagli della lezione
+
+Vedi `lessons/README.md` per istruzioni dettagliate.
+
+## 🤝 Contributi
+
+I contributi sono benvenuti! Sentiti libero di aprire issues o pull requests.
+
+## 📄 Licenza
+
+Questo progetto è open source e disponibile sotto licenza MIT.
