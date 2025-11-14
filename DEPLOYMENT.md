@@ -1,22 +1,36 @@
 # Deployment Guide - Fisica Website
 
 ## Overview
-This repository is now configured for automatic deployment to GitHub Pages.
+This repository is configured for automatic deployment to GitHub Pages with preview deployments for pull requests.
 
 ## Live Website
-- **URL**: https://marcoodignoti.github.io/fisica/
-- **Status**: Active after merging this PR to main branch
+- **Production URL**: https://marcoodignoti.github.io/fisica/
+- **Status**: Active after merging to main branch
 
-## How It Works
+## Deployment Workflows
 
-### Automatic Deployment
+### 1. Production Deployment (`.github/workflows/deploy.yml`)
 When changes are pushed to the `main` branch:
-1. GitHub Actions workflow (`.github/workflows/deploy.yml`) is triggered
+1. GitHub Actions workflow is triggered automatically
 2. The workflow checks out the repository
 3. Configures GitHub Pages
 4. Uploads all files as an artifact
-5. Deploys to GitHub Pages
+5. Deploys to production GitHub Pages
 6. Website is available at the live URL
+
+### 2. Preview Deployment (`.github/workflows/preview.yml`) ✨ NEW
+When pull requests are created or updated:
+1. GitHub Actions workflow is triggered automatically
+2. Creates a preview deployment for the PR
+3. Comments the preview URL on the pull request
+4. Updates preview on every new commit to the PR
+5. Preview is automatically cleaned up when PR is closed
+
+**Benefits of Preview Deployments:**
+- ✅ Test changes before merging to main
+- ✅ Share preview links with collaborators
+- ✅ Catch visual bugs early
+- ✅ Independent preview per PR branch
 
 ### Manual Deployment
 You can also trigger deployment manually:
@@ -34,10 +48,14 @@ You can also trigger deployment manually:
 4. Save the settings
 
 ### Permissions
-The workflow requires these permissions (already configured):
+**Production Workflow** (`.github/workflows/deploy.yml`):
 - `contents: read` - To read repository files
 - `pages: write` - To deploy to Pages
 - `id-token: write` - For authentication
+
+**Preview Workflow** (`.github/workflows/preview.yml`):
+- `pull-requests: write` - To comment preview URL on PRs
+- `contents: write` - To deploy preview pages
 
 ## Website Features
 
