@@ -79,6 +79,13 @@ fisica/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions workflow
+├── lessons/                    # Lesson content directory
+│   ├── lessons.json            # Lessons manifest
+│   ├── README.md               # Documentation for adding lessons
+│   ├── 01_intro.md             # Lesson 1 in Markdown
+│   ├── 02_cinematica.md        # Lesson 2 in Markdown
+│   ├── 03_dinamica.md          # Lesson 3 in Markdown
+│   └── 04_energia.md           # Lesson 4 in Markdown
 ├── .gitignore                  # Git ignore rules
 ├── README                      # Documentation
 ├── index.html                  # Main HTML file
@@ -89,10 +96,32 @@ fisica/
 ## Maintenance
 
 ### Adding New Lessons
-1. Edit `app.js`
-2. Add new lesson to `lessonsDB` object
-3. Commit and push to main
-4. Automatic deployment will publish changes
+The content is now **Markdown-based** and dynamically loaded!
+
+1. Create a new `.md` file in `lessons/` directory
+2. Add frontmatter metadata (title, date, description)
+3. Write content in Markdown (supports LaTeX math with `$...$` and `$$...$$`)
+4. Update `lessons/lessons.json` to register the new lesson
+5. Commit and push to main
+6. Automatic deployment will publish changes
+
+Example lesson file:
+```markdown
+---
+title: "05. New Topic"
+subtitle: "Subtitle"
+date: "DD/MM/YYYY"
+description: "Brief description"
+---
+
+# Heading
+
+Your content here with $inline math$ and display math:
+
+$$ E = mc^2 $$
+```
+
+For detailed instructions, see `lessons/README.md`.
 
 ### Updating Styles
 1. Edit `styles.css` for custom styles

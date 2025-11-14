@@ -61,15 +61,28 @@ Il sito viene automaticamente deployato su GitHub Pages quando vengono fatti pus
 - **CSS3**: Stili personalizzati e animazioni
 - **JavaScript (ES6+)**: Logica dell'applicazione e routing SPA
 - **Tailwind CSS**: Framework CSS utility-first (via CDN)
+- **Marked.js**: Parser Markdown per rendering dinamico dei contenuti
 - **KaTeX**: Rendering delle formule matematiche
 - **GitHub Pages**: Hosting statico gratuito
 
 ## 📚 Contenuti del Corso
 
+Le lezioni sono scritte in **Markdown** e caricate dinamicamente, rendendo facile l'aggiunta e la modifica via Git o GitHub editor.
+
 1. **Introduzione** - Analisi dimensionale e Sistema Internazionale
 2. **Cinematica** - Moto del punto materiale
 3. **Dinamica** - I principi di Newton
 4. **Energia** - Lavoro, energia cinetica e potenziale
+
+### Aggiungere Nuove Lezioni
+
+Per aggiungere una nuova lezione:
+1. Crea un file `.md` nella cartella `lessons/`
+2. Aggiungi i metadati frontmatter (titolo, data, descrizione)
+3. Scrivi il contenuto in Markdown
+4. Aggiorna `lessons/lessons.json` con i dettagli della lezione
+
+Vedi `lessons/README.md` per istruzioni dettagliate.
 
 ## 🤝 Contributi
 
