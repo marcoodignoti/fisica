@@ -59,103 +59,146 @@ class ThemeManager {
 }
 
 // ===================================
-// DATABASE LEZIONI
+// MARKDOWN LOADER - Dynamic Content Loading
 // ===================================
-const lessonsDB = {
-    1: {
-        title: "01. Introduzione",
-        subtitle: "Analisi Dimensionale",
-        date: "10/11/2025",
-        filename: "01_intro.txt",
-        description: "Definizione del vocabolario della fisica, Sistema Internazionale (SI) e analisi dimensionale.",
-        content: `
-            <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">01. Introduzione</h1>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Data: 10/11/2025</div>
-            </header>
-            <article class="space-y-6 text-justify dark:text-gray-200">
-                <p>In questa lezione introduttiva, definiamo le grandezze fisiche fondamentali e le loro unità di misura.</p>
-                <h2 class="text-xl font-bold uppercase mt-8 mb-4 border-b border-gray-300 dark:border-gray-600 pb-1 text-black dark:text-gray-100">Analisi Dimensionale</h2>
-                <p>Ogni grandezza fisica $G$ può essere espressa in termini di grandezze fondamentali:</p>
-                <div class="formula-block py-2">$$ [G] = L^a M^b T^c $$</div>
-                <p>Questa notazione è fondamentale per verificare la correttezza dimensionale delle formule fisiche.</p>
-            </article>
-        `
-    },
-    2: {
-        title: "02. Cinematica",
-        subtitle: "Del Punto Materiale",
-        date: "12/11/2025",
-        filename: "02_cinematica.txt",
-        description: "Posizione, velocità e accelerazione. Moto rettilineo uniforme e uniformemente accelerato.",
-        content: `
-            <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">02. Cinematica</h1>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Data: 12/11/2025</div>
-            </header>
-            <article class="space-y-6 text-justify dark:text-gray-200">
-                <p>Descriviamo il moto indipendentemente dalle cause. L'equazione oraria fondamentale per il moto uniformemente accelerato è:</p>
-                <div class="formula-block py-2">$$ x(t) = x_0 + v_0 t + \\frac{1}{2} a t^2 $$</div>
-                <p>Da cui deriviamo la velocità come derivata della posizione rispetto al tempo: $v(t) = \\frac{dx}{dt}$.</p>
-            </article>
-        `
-    },
-    3: {
-        title: "03. Dinamica",
-        subtitle: "I Principi",
-        date: "15/11/2025",
-        filename: "03_dinamica.txt",
-        description: "I tre principi di Newton, F=ma, diagrammi di corpo libero e piano inclinato.",
-        content: `
-            <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">03. I Principi della Dinamica</h1>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Data: 15/11/2025</div>
-            </header>
-            <article class="space-y-6 text-justify dark:text-gray-200">
-                <p>La dinamica studia le cause del moto. Il secondo principio di Newton è la chiave di volta della meccanica classica:</p>
-                <div class="formula-block py-2">$$ \\vec{F} = m \\cdot \\vec{a} $$</div>
-                
-                <h2 class="text-xl font-bold uppercase mt-10 mb-4 border-b border-gray-300 dark:border-gray-600 pb-1 text-black dark:text-gray-100">Esempio: Piano Inclinato</h2>
-                <div class="my-8 border border-black dark:border-gray-400 p-4 flex justify-center bg-white dark:bg-gray-800">
-                    <svg width="100%" height="250" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
-                            </marker>
-                        </defs>
-                        <line x1="50" y1="200" x2="350" y2="200" stroke="currentColor" stroke-width="2" />
-                        <line x1="50" y1="200" x2="350" y2="50" stroke="currentColor" stroke-width="2" />
-                        <path d="M 100 200 Q 110 190 120 187" stroke="currentColor" fill="none" />
-                        <text x="130" y="195" font-family="Courier New" font-size="14" fill="currentColor">θ</text>
-                        <rect x="180" y="115" width="40" height="40" transform="rotate(-26.5 200 135)" fill="white" stroke="currentColor" stroke-width="2"/>
-                        <text x="195" y="140" font-family="Courier New" font-size="14" font-weight="bold" fill="currentColor">m</text>
-                        <line x1="200" y1="135" x2="200" y2="210" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" />
-                        <text x="205" y="225" font-family="Courier New" font-size="14" fill="currentColor">P</text>
-                    </svg>
-                </div>
-                <p>L'accelerazione lungo il piano (senza attrito) è $a = g \\sin(\\theta)$.</p>
-            </article>
-        `
-    },
-    4: {
-        title: "04. Energia",
-        subtitle: "Lavoro e Potenza",
-        date: "18/11/2025",
-        filename: "04_energia.txt",
-        description: "Lavoro, energia cinetica, forze conservative ed energia potenziale.",
-        content: `
-            <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">04. Lavoro ed Energia</h1>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Data: 18/11/2025</div>
-            </header>
-            <article class="space-y-6 text-justify dark:text-gray-200">
-                <p>Il lavoro compiuto da una forza costante è il prodotto scalare tra forza e spostamento.</p>
-                <div class="formula-block py-2">$$ W = \\vec{F} \\cdot \\vec{d} = F d \\cos(\\theta) $$</div>
-                <p>Questo concetto ci porta al teorema dell'energia cinetica: $W = \\Delta K$.</p>
-            </article>
-        `
+
+// HTML escaping utility to prevent XSS
+function escapeHTML(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+class MarkdownLoader {
+    constructor() {
+        this.lessonsManifest = null;
+        this.lessonsDB = {};
+        this.cache = new Map();
+        this.maxCacheSize = 10; // Limit cache size to prevent memory issues
     }
-};
+
+    async loadManifest() {
+        if (this.lessonsManifest) return this.lessonsManifest;
+        
+        try {
+            const response = await fetch('lessons/lessons.json');
+            if (!response.ok) throw new Error('Failed to load lessons manifest');
+            this.lessonsManifest = await response.json();
+            
+            // Build lessonsDB from manifest
+            this.lessonsManifest.forEach(lesson => {
+                this.lessonsDB[lesson.id] = {
+                    title: lesson.title,
+                    subtitle: lesson.subtitle,
+                    date: lesson.date,
+                    filename: lesson.filename,
+                    description: lesson.description
+                };
+            });
+            
+            return this.lessonsManifest;
+        } catch (error) {
+            console.error('Error loading lessons manifest:', error);
+            return [];
+        }
+    }
+
+    parseFrontmatter(markdown) {
+        const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+        const match = markdown.match(frontmatterRegex);
+        
+        if (!match) {
+            return { metadata: {}, content: markdown };
+        }
+        
+        const [, frontmatter, content] = match;
+        const metadata = {};
+        
+        frontmatter
+            .split('\n')
+            .filter(line => line.trim() && !line.trim().startsWith('#'))
+            .forEach(line => {
+                const [key, ...valueParts] = line.split(':');
+                if (key && valueParts.length) {
+                    const value = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
+                    if (value) {  // Only add if value is not empty
+                        metadata[key.trim()] = value;
+                    }
+                }
+            });
+        
+        return { metadata, content };
+    }
+
+    async loadLesson(id) {
+        const lesson = this.lessonsDB[id];
+        if (!lesson) return null;
+        
+        // Check cache first
+        const cacheKey = `lesson-${id}`;
+        if (this.cache.has(cacheKey)) {
+            return this.cache.get(cacheKey);
+        }
+        
+        try {
+            const response = await fetch(`lessons/${lesson.filename}`);
+            if (!response.ok) throw new Error(`Failed to load lesson ${id}`);
+            
+            const markdown = await response.text();
+            const { metadata, content } = this.parseFrontmatter(markdown);
+            
+            // Configure marked with custom renderer
+            marked.setOptions({
+                breaks: true,
+                gfm: true
+            });
+            
+            // Parse markdown to HTML
+            const htmlContent = marked.parse(content);
+            
+            // Escape metadata to prevent XSS
+            const safeTitle = escapeHTML(metadata.title || lesson.title);
+            const safeDate = escapeHTML(metadata.date || lesson.date);
+            
+            // Wrap content in proper structure
+            const wrappedContent = `
+                <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-6">
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-black dark:text-gray-100">${safeTitle}</h1>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Data: ${safeDate}</div>
+                </header>
+                <article class="space-y-6 text-justify dark:text-gray-200">
+                    ${htmlContent}
+                </article>
+            `;
+            
+            const result = {
+                ...lesson,
+                content: wrappedContent,
+                metadata
+            };
+            
+            // Cache management - remove oldest entry if cache is full
+            if (this.cache.size >= this.maxCacheSize) {
+                const firstKey = this.cache.keys().next().value;
+                this.cache.delete(firstKey);
+            }
+            this.cache.set(cacheKey, result);
+            
+            return result;
+        } catch (error) {
+            console.error(`Error loading lesson ${id}:`, error);
+            return null;
+        }
+    }
+
+    getLessonsDB() {
+        return this.lessonsDB;
+    }
+}
+
+// Global instance
+const markdownLoader = new MarkdownLoader();
 
 // ===================================
 // ROUTER - Gestione Navigazione SPA
@@ -168,11 +211,13 @@ class Router {
             lesson: document.getElementById('view-lesson')
         };
         this.currentLessonId = null;
-        this.init();
+        this.lessonsDB = {};
     }
 
-    init() {
-        this.populateIndex();
+    async init() {
+        await markdownLoader.loadManifest();
+        this.lessonsDB = markdownLoader.getLessonsDB();
+        await this.populateIndex();
         this.setupEventDelegation();
     }
 
@@ -190,26 +235,30 @@ class Router {
         });
     }
 
-    populateIndex() {
+    async populateIndex() {
         const container = document.getElementById('lessons-list-container');
         let html = '';
 
-        for (const id in lessonsDB) {
-            const lesson = lessonsDB[id];
+        for (const id in this.lessonsDB) {
+            const lesson = this.lessonsDB[id];
+            const safeTitle = escapeHTML(lesson.title);
+            const safeDate = escapeHTML(lesson.date);
+            const safeDescription = escapeHTML(lesson.description);
+            
             html += `
                 <article class="group" role="listitem">
                     <header>
                         <h3 class="text-2xl font-bold mb-1">
-                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Vai alla lezione: ${lesson.title}">
-                                ${lesson.title}
+                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Vai alla lezione: ${safeTitle}">
+                                ${safeTitle}
                             </button>
                         </h3>
                         <div class="arrow-deco text-lg mb-2" aria-hidden="true">▼</div>
-                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">Pubblicato il: ${lesson.date}</div>
+                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">Pubblicato il: ${safeDate}</div>
                     </header>
-                    <div class="mb-3 dark:text-gray-300"><p>${lesson.description}</p></div>
+                    <div class="mb-3 dark:text-gray-300"><p>${safeDescription}</p></div>
                     <footer>
-                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Leggi la lezione ${lesson.title}">
+                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Leggi la lezione ${safeTitle}">
                             [ Leggi ]
                         </button>
                     </footer>
@@ -238,18 +287,28 @@ class Router {
         window.scrollTo(0, 0);
     }
 
-    goToLesson(idInput) {
+    async goToLesson(idInput) {
         const id = parseInt(idInput);
-        const lesson = lessonsDB[id];
+        
+        // Show loading state
+        const container = document.getElementById('lesson-content-container');
+        container.innerHTML = '<div class="text-center py-12"><p class="text-gray-500 dark:text-gray-400">Caricamento in corso...</p></div>';
+        
+        this.hideAll();
+        this.views.lesson.classList.add('active');
+        window.scrollTo(0, 0);
+        
+        // Load lesson dynamically from markdown file
+        const lesson = await markdownLoader.loadLesson(id);
 
         if (!lesson) {
+            container.innerHTML = '<div class="text-center py-12"><p class="text-red-500">Errore: lezione non trovata</p></div>';
             console.warn(`Lezione ${id} non trovata`);
             return;
         }
 
         this.currentLessonId = id;
 
-        const container = document.getElementById('lesson-content-container');
         container.innerHTML = lesson.content;
         document.getElementById('lesson-breadcrumbs-id').textContent = lesson.filename;
 
@@ -265,9 +324,6 @@ class Router {
         }
 
         this.renderNavigation(id);
-        this.hideAll();
-        this.views.lesson.classList.add('active');
-        window.scrollTo(0, 0);
     }
 
     renderNavigation(id) {
@@ -276,11 +332,12 @@ class Router {
         const prevId = id - 1;
         const nextId = id + 1;
 
-        if (lessonsDB[prevId]) {
+        if (this.lessonsDB[prevId]) {
+            const safePrevTitle = escapeHTML(this.lessonsDB[prevId].title);
             prevContainer.innerHTML = `
                 <span class="block text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Precedente</span>
                 <button class="nav-btn standard-link font-bold text-sm md:text-base" data-route="lesson" data-lesson-id="${prevId}">
-                    ← ${lessonsDB[prevId].title}
+                    ← ${safePrevTitle}
                 </button>
             `;
         } else {
@@ -292,11 +349,12 @@ class Router {
             `;
         }
 
-        if (lessonsDB[nextId]) {
+        if (this.lessonsDB[nextId]) {
+            const safeNextTitle = escapeHTML(this.lessonsDB[nextId].title);
             nextContainer.innerHTML = `
                 <span class="block text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Successiva</span>
                 <button class="nav-btn standard-link font-bold text-sm md:text-base" data-route="lesson" data-lesson-id="${nextId}">
-                    ${lessonsDB[nextId].title} →
+                    ${safeNextTitle} →
                 </button>
             `;
         } else {
@@ -313,7 +371,15 @@ class Router {
 // ===================================
 // INIZIALIZZAZIONE APP
 // ===================================
-document.addEventListener('DOMContentLoaded', () => {
-    new ThemeManager();
-    new Router();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        new ThemeManager();
+        const router = new Router();
+        await router.init();
+    } catch (error) {
+        console.error('Failed to initialize application:', error);
+        // Display user-friendly error message
+        const container = document.getElementById('lessons-list-container') || document.body;
+        container.innerHTML = '<div style="padding: 2rem; text-align: center; color: #dc2626;">Errore di inizializzazione. Per favore ricarica la pagina.</div>';
+    }
 });
