@@ -1,0 +1,37 @@
+name: Preview Site on Pull Request
+
+# This action creates a preview deployment for each pull request
+# The preview will be updated on every push to the PR branch
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+# Required permissions:
+# - pull-requests: write - to comment preview URL on the PR
+# - contents: write - to deploy preview pages
+permissions:
+  pull-requests: write
+  contents: write
+
+# Use concurrency to prevent multiple preview deployments from conflicting
+concurrency:
+  group: preview-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The site is static, so we just need to deploy the source files
+      # No build steps are required since all assets are loaded via CDN
+      - name: Preview Pages
+        uses: rajyan/preview-pages@v1
+        with:
+          # Deploy the entire repository root (contains index.html, app.js, styles.css, lessons/, etc.)
+          source-dir: .
