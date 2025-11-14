@@ -11,8 +11,22 @@ class ThemeManager {
     }
 
     init() {
+        this.loadSavedTheme();
         this.toggleBtn.addEventListener('click', () => this.toggle());
         this.observeSystemPreference();
+    }
+
+    loadSavedTheme() {
+        const stored = localStorage.getItem(this.storageKey);
+        if (stored === 'dark') {
+            this.setDark();
+        } else if (stored === 'light') {
+            this.setLight();
+        } else {
+            // If no preference is stored, use system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            prefersDark ? this.setDark() : this.setLight();
+        }
     }
 
     toggle() {
