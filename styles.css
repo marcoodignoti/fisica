@@ -20,7 +20,7 @@ body {
 }
 
 body.dark {
-    background-color: #1a1a1a;
+    background-color: #000000;
     color: #e5e5e5;
 }
 
@@ -57,7 +57,7 @@ body.dark {
 }
 
 body.dark #view-landing {
-    background-color: #1a1a1a;
+    background-color: #000000;
 }
 
 /* Index & Lesson Views */
