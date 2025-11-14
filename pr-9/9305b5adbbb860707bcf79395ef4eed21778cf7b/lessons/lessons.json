@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "filename": "01_intro.md",
+    "title": "01. Introduzione",
+    "subtitle": "Analisi Dimensionale",
+    "date": "10/11/2025",
+    "description": "Definizione del vocabolario della fisica, Sistema Internazionale (SI) e analisi dimensionale."
+  },
+  {
+    "id": 2,
+    "filename": "02_cinematica.md",
+    "title": "02. Cinematica",
+    "subtitle": "Del Punto Materiale",
+    "date": "12/11/2025",
+    "description": "Posizione, velocità e accelerazione. Moto rettilineo uniforme e uniformemente accelerato."
+  },
+  {
+    "id": 3,
+    "filename": "03_dinamica.md",
+    "title": "03. Dinamica",
+    "subtitle": "I Principi",
+    "date": "15/11/2025",
+    "description": "I tre principi di Newton, F=ma, diagrammi di corpo libero e piano inclinato."
+  },
+  {
+    "id": 4,
+    "filename": "04_energia.md",
+    "title": "04. Energia",
+    "subtitle": "Lavoro e Potenza",
+    "date": "18/11/2025",
+    "description": "Lavoro, energia cinetica, forze conservative ed energia potenziale."
+  }
+]

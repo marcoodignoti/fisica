@@ -1,0 +1,10 @@
+# robots.txt for https://marcoodignoti.github.io/fisica/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://marcoodignoti.github.io/fisica/sitemap.xml
+
+# Crawl-delay (optional, helps manage server load)
+Crawl-delay: 1

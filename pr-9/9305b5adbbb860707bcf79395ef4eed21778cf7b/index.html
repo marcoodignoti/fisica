@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corso completo di Fisica Generale I - Appunti e lezioni con formule matematiche, cinematica, dinamica ed energia. Corso interattivo con dark mode.">
+    <meta name="keywords" content="fisica, fisica generale, corso fisica, appunti fisica, cinematica, dinamica, energia, formule fisiche, università">
+    <meta name="author" content="Marco Odignoti">
+    <meta name="color-scheme" content="light dark">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://marcoodignoti.github.io/fisica/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marcoodignoti.github.io/fisica/">
+    <meta property="og:title" content="Fisica Generale I - Corso Completo">
+    <meta property="og:description" content="Corso interattivo di Fisica Generale I con appunti, lezioni e formule matematiche. Include cinematica, dinamica ed energia.">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Fisica Generale I - Corso Completo">
+    <meta name="twitter:description" content="Corso interattivo di Fisica Generale I con appunti, lezioni e formule matematiche.">
+    
+    <title>Fisica Generale I - Corso Completo | Appunti e Lezioni</title>
+    
+    <!-- DNS Prefetch & Preconnect for CDN resources -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- CSS Personale -->
+    <link rel="stylesheet" href="styles.min.css">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Fisica Generale I",
+      "description": "Corso completo di Fisica Generale I con appunti, lezioni e formule matematiche",
+      "provider": {
+        "@type": "Organization",
+        "name": "Marco Odignoti"
+      },
+      "educationalLevel": "Università",
+      "inLanguage": "it",
+      "courseCode": "FISICA-I"
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Courier New"', 'Courier', 'Consolas', 'Monaco', 'monospace'],
+                    },
+                    spacing: {
+                        '15px': '15px',
+                    },
+                    maxWidth: {
+                        'text-block': '800px',
+                    },
+                    colors: {
+                        'light-bg': '#ffffff',
+                        'light-text': '#000000',
+                        'light-border': '#e5e7eb',
+                        'light-subtle': '#f9f9f9',
+                        'dark-bg': '#1a1a1a',
+                        'dark-text': '#e5e5e5',
+                        'dark-border': '#333333',
+                        'dark-subtle': '#2a2a2a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-mono text-base leading-relaxed bg-white dark:bg-black">
+
+    <!-- Prevent Flash of Unstyled Content (FOUC) -->
+    <script>
+        (function() {
+            const stored = localStorage.getItem('theme');
+            const isDark = stored === 'dark' || 
+                (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <!-- THEME TOGGLE BUTTON -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Attiva/Disattiva dark mode" title="Dark mode">
+        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <!-- LANDING PAGE -->
+    <div id="view-landing" class="view-section active" role="main" aria-label="Pagina principale">
+        <h1 class="text-7xl md:text-9xl font-bold tracking-tighter mb-8 text-center select-none dark:text-gray-100">
+            FISICA
+        </h1>
+
+        <button class="nav-btn" data-route="index" aria-label="Inizia il corso di fisica">
+            <div class="transition-transform duration-500 ease-out transform hover:translate-x-6 hover:scale-110" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+            </div>
+            <span class="mt-4 text-gray-400 italic text-lg transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-300">
+                Iniziamo
+            </span>
+        </button>
+    </div>
+
+    <!-- INDEX PAGE -->
+    <div id="view-index" class="view-section max-w-text-block mx-auto px-[15px] w-full" role="main">
+        
+        <nav class="text-sm text-gray-500 dark:text-gray-400 mb-8" aria-label="Breadcrumb">
+            <button class="nav-btn breadcrumb-link" data-route="landing">/ home</button> 
+            <span class="mx-1" aria-hidden="true">/</span> 
+            <span class="text-black dark:text-gray-100 font-bold" aria-current="page">lezioni</span>
+        </nav>
+
+        <header class="mb-12 border-b-2 border-black dark:border-gray-400 pb-4">
+            <h2 class="text-4xl font-bold tracking-tighter mb-2 text-black dark:text-gray-100">Indice</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Appunti e lezioni per il corso di Fisica Generale I</p>
+        </header>
+
+        <section>
+            <h2 class="text-xl font-bold uppercase tracking-widest mb-10 border-l-4 border-black dark:border-gray-400 pl-3 text-black dark:text-gray-100">
+                Elenco Lezioni
+            </h2>
+            <div class="space-y-12" id="lessons-list-container" role="list" aria-label="Elenco delle lezioni disponibili"></div>
+        </section>
+        
+        <footer class="mt-24 pt-8 border-t border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-xs">
+            <p>© 2025 Corso di Fisica.</p>
+        </footer>
+    </div>
+
+    <!-- LESSON PAGE -->
+    <div id="view-lesson" class="view-section max-w-text-block mx-auto px-[15px] w-full" role="main">
+        
+        <nav class="text-sm text-gray-500 dark:text-gray-400 mb-8" aria-label="Breadcrumb">
+            <button class="nav-btn breadcrumb-link" data-route="landing">/ home</button> 
+            <span class="mx-1" aria-hidden="true">/</span> 
+            <button class="nav-btn breadcrumb-link" data-route="index">lezioni</button>
+            <span class="mx-1" aria-hidden="true">/</span>
+            <span id="lesson-breadcrumbs-id" class="text-black dark:text-gray-100 font-bold" aria-current="page">...</span>
+        </nav>
+
+        <div id="lesson-content-container" class="animate-fade-up"></div>
+
+        <footer class="mt-16 pt-8 border-t border-black dark:border-gray-400 flex justify-between items-start gap-4" role="navigation" aria-label="Navigazione tra lezioni">
+            <div id="nav-prev-container" class="flex-1 pr-4"></div>
+            <div id="nav-next-container" class="flex-1 pl-4 text-right"></div>
+        </footer>
+
+        <footer class="mt-12 text-center text-gray-400 dark:text-gray-500 text-xs">
+            <p>Fine del documento.</p>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="app.min.js"></script>
+</body>
+</html>
