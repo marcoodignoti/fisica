@@ -77,8 +77,9 @@ dist/
 build/
 out/
 *.bundle.js
-*.min.js
-*.min.css
+# Include minified files for production
+# *.min.js
+# *.min.css
 
 # ===================================
 # LOGS

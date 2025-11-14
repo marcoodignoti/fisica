@@ -11,8 +11,22 @@ class ThemeManager {
     }
 
     init() {
+        this.loadSavedTheme();
         this.toggleBtn.addEventListener('click', () => this.toggle());
         this.observeSystemPreference();
+    }
+
+    loadSavedTheme() {
+        const stored = localStorage.getItem(this.storageKey);
+        if (stored === 'dark') {
+            this.setDark();
+        } else if (stored === 'light') {
+            this.setLight();
+        } else {
+            // If no preference is stored, use system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            prefersDark ? this.setDark() : this.setLight();
+        }
     }
 
     toggle() {
@@ -183,19 +197,19 @@ class Router {
         for (const id in lessonsDB) {
             const lesson = lessonsDB[id];
             html += `
-                <article class="group">
+                <article class="group" role="listitem">
                     <header>
                         <h3 class="text-2xl font-bold mb-1">
-                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}">
+                            <button class="nav-btn standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Vai alla lezione: ${lesson.title}">
                                 ${lesson.title}
                             </button>
                         </h3>
-                        <div class="arrow-deco text-lg mb-2">▼</div>
+                        <div class="arrow-deco text-lg mb-2" aria-hidden="true">▼</div>
                         <div class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">Pubblicato il: ${lesson.date}</div>
                     </header>
                     <div class="mb-3 dark:text-gray-300"><p>${lesson.description}</p></div>
                     <footer>
-                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}">
+                        <button class="nav-btn text-sm font-bold uppercase tracking-wide standard-link" data-route="lesson" data-lesson-id="${id}" aria-label="Leggi la lezione ${lesson.title}">
                             [ Leggi ]
                         </button>
                     </footer>
