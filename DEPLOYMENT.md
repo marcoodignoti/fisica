@@ -80,6 +80,7 @@ fisica/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions workflow
 ├── .gitignore                  # Git ignore rules
+├── .nojekyll                   # Disables Jekyll processing for GitHub Pages
 ├── README                      # Documentation
 ├── index.html                  # Main HTML file
 ├── app.js                      # JavaScript application
@@ -122,6 +123,12 @@ Then visit: http://localhost:8080
 - Ensure repository is public or Pages is enabled for private repos
 - Check that index.html exists in root directory
 - Verify the URL is correct
+- Ensure `.nojekyll` file exists to bypass Jekyll processing
+
+### Site Appears Offline or Broken
+- Verify the `.nojekyll` file exists in the root directory
+- This file disables Jekyll processing and ensures static files are served correctly
+- Without it, GitHub Pages may not serve the site properly
 
 ## Support
 
